@@ -12,6 +12,7 @@
     <modules>
         <module>security-hello</module>
         <module>security-ip</module>
+        <module>security-thymeleaf</module>
     </modules>
     
     <parent>
