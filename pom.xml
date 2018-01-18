@@ -11,8 +11,10 @@
 
     <modules>
         <module>security-hello</module>
-        <module>security-ip</module>
+        <module>security-ip-login</module>
         <module>security-thymeleaf</module>
+        <module>jjwtdemo</module>
+        <module>securityjwt</module>
     </modules>
     
     <parent>

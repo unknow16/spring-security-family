@@ -1,0 +1,16 @@
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework: debug
+
+jwt:
+  header: Authorization
+  tokenHead: "Bearer "
+  secret: mysecret
+  expiration: 10  # 分钟
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      register: "auth/register"
