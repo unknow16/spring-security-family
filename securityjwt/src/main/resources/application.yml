@@ -7,8 +7,8 @@ logging:
 jwt:
   header: Authorization
   tokenHead: "Bearer "
-  secret: mysecret
-  expiration: 10  # 分钟
+  secret: mySecret
+  expiration: 86400 # 单位秒=24小时
   route:
     authentication:
       path: auth

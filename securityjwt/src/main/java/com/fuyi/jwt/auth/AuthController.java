@@ -29,4 +29,15 @@ public class AuthController {
 
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
+
+    @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
+    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
+        String token = request.getHeader(this.header);
+        String refreshedToken = authService.refresh(token);
+        if (refreshedToken == null) {
+            return ResponseEntity.badRequest().body(null);
+        } else {
+            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+        }
+    }
 }

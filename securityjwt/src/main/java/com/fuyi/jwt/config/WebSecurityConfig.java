@@ -1,6 +1,5 @@
 package com.fuyi.jwt.config;
 
-import com.fuyi.jwt.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +25,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Spring会自动寻找同样类型的具体类注入，这里就是JwtUserDetailsServiceImpl了
     @Autowired
-    private UserDetailsService userDetailsService;
+    public UserDetailsService userDetailsService;
 
-    @Autowired
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
+
+    @Bean
+    public JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint() {
+        return new JwtAuthenticationEntryPoint();
+    }
+
+    // 装载BCrypt密码编码器
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired //自动注入AuthenticationManagerBuilder来构建AuthenticationManager
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
                 // 设置UserDetailsService
@@ -36,17 +51,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 使用BCrypt进行密码的hash
                 .passwordEncoder(passwordEncoder());
     }
-    // 装载BCrypt密码编码器
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 // 由于使用的是JWT，我们这里不需要csrf
                 .csrf().disable()
+
+                // 出现AuthenticationException异常时的入口自定义返回信息
+                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint()).and()
 
                 // 基于token，所以不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
@@ -76,8 +90,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter();
-    }
+
 }

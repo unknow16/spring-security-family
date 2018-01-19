@@ -1,4 +1,4 @@
-package com.fuyi.jwt.service;
+package com.fuyi.jwt.config;
 
 import com.fuyi.jwt.domain.JwtUserFactory;
 import com.fuyi.jwt.domain.User;
@@ -25,7 +25,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
         ArrayList<String> roles = new ArrayList<String>();
         roles.add("ROLE_ADMIN");
         roles.add("ROLE_USER");
-        User user = new User("123", "fuyi", "123", 1, "haha", roles);
+        User user = new User("123", "1234", "$2a$10$YmgSNdSh0EOEz8eAivAEJ.Sasci4kds147wB0yxA6bHWXJnDxRAKe", 1, "haha", roles);
 
         if (user != null) {
             return JwtUserFactory.create(user);

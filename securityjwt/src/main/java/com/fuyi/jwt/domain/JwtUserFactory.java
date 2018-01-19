@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * 用来把数据库中查询出来的用户，转成spring security中定义的用户
  * Created by Administrator on 2018/1/18 0018.
  */
 public final class JwtUserFactory {

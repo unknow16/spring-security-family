@@ -1,7 +1,9 @@
 package com.fuyi.jwt.auth;
 
+import com.fuyi.jwt.domain.JwtUser;
 import com.fuyi.jwt.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AuthServiceImpl implements AuthService {
+
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
 
     private UserDetailsService userDetailsService;
     private AuthenticationManager authenticationManager;
@@ -34,6 +39,12 @@ public class AuthServiceImpl implements AuthService {
         return null;
     }
 
+    /**
+     * 根据用户名密码生成jwt的token返回
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public String login(String username, String password) {
         //securityConfig中配置的auth允许，所以不会被UsernamePasswordAuthenticationFilter拦截，在此颁发token前，自己执行认证
@@ -53,8 +64,22 @@ public class AuthServiceImpl implements AuthService {
         return jwtToken;
     }
 
+    /**
+     * 刷新token
+     * 1.更新创建时间
+     * 2.更新过期时间
+     * @param oldToken
+     * @return
+     */
     @Override
     public String refresh(String oldToken) {
+        String token = oldToken.substring(tokenHead.length());
+        String username = jwtTokenUtil.getUsernameFromToken(token);
+        JwtUser jwtUser = (JwtUser) userDetailsService.loadUserByUsername(username);
+
+        if (jwtTokenUtil.canRefreshToken(token,jwtUser.getLastPasswordResetDate())){
+            return jwtTokenUtil.refreshToken(token);
+        }
         return null;
     }
 }

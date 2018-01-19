@@ -3,6 +3,7 @@ package com.fuyi.jwt.domain;
 import java.util.List;
 
 /**
+ * 数据库中查询出来的用户对像
  * Created by Administrator on 2018/1/18 0018.
  */
 public class User {

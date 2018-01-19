@@ -1,4 +1,4 @@
-package com.fuyi.jwt.filter;
+package com.fuyi.jwt.config;
 
 import com.fuyi.jwt.auth.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
