@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     protected UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();  //UserDetailsService的实现类
         manager.createUser(User.withUsername("user_1").password("123456").authorities("USER").build());
         manager.createUser(User.withUsername("user_2").password("123456").authorities("USER").build());
         return manager;
