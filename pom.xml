@@ -15,6 +15,7 @@
         <module>03-ip-login</module>
         <module>04-jwt</module>
         <module>05-oauth2</module>
+        <module>06-aouth2-diy</module>
     </modules>
 
     <properties>

@@ -56,8 +56,8 @@ public class OAuth2ServerConfig {
         @Autowired
         private AuthenticationManager authenticationManager;
 
-        @Autowired
-        private RedisConnectionFactory redisConnectionFactory;
+//        @Autowired
+//        private RedisConnectionFactory redisConnectionFactory;
 
         /**
          * 配置 client(云冲印)在认证服务器侧注册的信息，
@@ -85,7 +85,7 @@ public class OAuth2ServerConfig {
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
             endpoints
-                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                    //.tokenStore()
                     .authenticationManager(authenticationManager);
         }
 
