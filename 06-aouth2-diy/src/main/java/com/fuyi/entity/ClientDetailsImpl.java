@@ -1,9 +1,7 @@
 package com.fuyi.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
@@ -19,6 +17,8 @@ import java.util.*;
 @Builder
 @ToString(callSuper = true)
 @TableName("jr_client_details")
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientDetailsImpl implements Serializable {
 
     private static final long serialVersionUID = 3690855873346127925L;

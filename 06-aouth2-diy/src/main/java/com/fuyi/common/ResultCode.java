@@ -12,23 +12,25 @@ public enum ResultCode {
      */
     SUCCESS(10000, "success"),
 
-    PARAM_ERROR(10001, "参数错误:%s"),
+    PARAM_ERROR(10001, "参数错误"),
 
     //-----账户错误-----
     USERNAME_EXIST(20001, "用户名已使用"),
     MOBILE_EXIST(20002, "手机号已使用"),
     EMAIL_EXIST(20003, "邮箱已使用"),
     NEWPASSWORD_NOT_EQUAL(20004, "新密码输入不一致"),
-    USER_NOT_EXIST(20005, "用户【%s】不存在"),
+    USER_NOT_EXIST(20005, "用户不存在"),
     MOBILE_NOT_EXIST(20006, "手机号不存在"),
 
     //--oauth验证错误---
+    OAUTH2_ERROR(30000, "oauth2错误"),
     OAUTH2_TOKEN_ACQUIRE_ERROR(30001, "验证失败: %s"),
     OAUTH2_TOKEN_VERIFY_ERROR(30002, "验证失败: %s"),
     OAUTH2_INVALID_SCOPE_ERROR(30003, "无效的scope"),
     OAUTH2_UNSUPPORTED_GRANT_TYPE_ERROR(30004, "不支持的grant type"),
     CLIENT_AUTHENCATION_ERROR(30005, "客户端认证错误"),
     USER_AUTHENCATION_ERROR(30006, "用户认证错误"),
+
 
     //验证码错误
     SMS_EXCEED_LIMIT(40001, "短信验证码发送超过限制"),

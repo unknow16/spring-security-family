@@ -1,5 +1,6 @@
 package com.fuyi.config;
 
+import com.fuyi.ex.Oauth2WebResponseExceptionTranslator;
 import com.fuyi.provider.SmsAuthenticationProvider;
 import com.fuyi.service.impl.ClientDetailsServiceImpl;
 import com.fuyi.service.impl.UserDetailsServiceImpl;
@@ -73,7 +74,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService())
-                .tokenGranter(tokenGranter);
+                .tokenGranter(tokenGranter)
+                .exceptionTranslator(new Oauth2WebResponseExceptionTranslator());
     }
 
     @Override

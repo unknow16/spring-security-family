@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
     public ApiResult handleException(Exception e) {
         // 打印异常堆栈信息
         log.error(e.getMessage(), e);
-        return ApiResult.of(ResultCode.INTERNAL_ERROR);
+        return ApiResult.error(ResultCode.INTERNAL_ERROR);
     }
 
     /**
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ApiResult handleOpdRuntimeException(AuthException e) {
         log.error(e.getMessage(), e);
-        return ApiResult.of(e.getResultCode());
+        return ApiResult.error(e.getResultCode());
     }
 
 

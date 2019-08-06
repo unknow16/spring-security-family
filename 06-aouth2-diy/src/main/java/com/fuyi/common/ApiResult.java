@@ -8,7 +8,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class ApiResult {
+public class ApiResult<T> {
     /**
      * 结果码
      */
@@ -19,24 +19,37 @@ public class ApiResult {
      */
     private String msg;
 
+    /**
+     * 结果数据
+     */
+    private T data;
 
-    public ApiResult() {
-
+    private ApiResult(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 
-    public ApiResult(ResultCode resultCode) {
-        this.code = resultCode.getCode();
-        this.msg = resultCode.getMsg();
+    private ApiResult(Integer code, String msg, T data) {
+        this(code, msg);
+        this.data = data;
     }
 
     /**
      * 生成一个ApiResult对象, 并返回
-     *
-     * @param resultCode
-     * @return
      */
-    public static ApiResult of(ResultCode resultCode) {
-        return new ApiResult(resultCode);
+    public static ApiResult success(Object data) {
+        return new ApiResult(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMsg(), data);
     }
 
+    public static ApiResult error(ResultCode resultCode) {
+        return new ApiResult(resultCode.getCode(), resultCode.getMsg());
+    }
+
+    public static ApiResult of(Integer code, String msg) {
+        return new ApiResult(code, msg);
+    }
+
+    public static ApiResult of(Integer code, String msg, String data) {
+        return new ApiResult(code, msg, data);
+    }
 }

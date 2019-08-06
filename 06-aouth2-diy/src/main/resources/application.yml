@@ -3,14 +3,3 @@ server:
 spring:
   profiles:
     active: dev
-#spring:
-#  redis:
-#    host: 172.17.200.4
-#    password: 1050774e6833a395fc661b728afdc60e
-#    port: 6379
-#    database: 1
-#security:
-#  oauth2:
-#    resource:
-#      filter-order: 3
-
