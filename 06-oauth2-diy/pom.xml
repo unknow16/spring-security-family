@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>06-aouth2-diy</artifactId>
+    <artifactId>06-oauth2-diy</artifactId>
 
 
     <dependencies>

@@ -8,8 +8,8 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>05-oauth2</artifactId>
-	<name>05-oauth2</name>
+	<artifactId>05-oauth2-simple</artifactId>
+	<name>05-oauth2-simple</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
