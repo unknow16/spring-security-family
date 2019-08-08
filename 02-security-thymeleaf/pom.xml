@@ -9,7 +9,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>02-thymeleaf</artifactId>
+	<artifactId>02-security-thymeleaf</artifactId>
 
 
 

@@ -9,8 +9,8 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>03-ip-login</artifactId>
-	<name>03-ip-login</name>
+	<artifactId>03-security-ip-login</artifactId>
+	<name>03-security-ip-login</name>
 	<description>Demo project for Spring Boot</description>
 
 	<dependencies>

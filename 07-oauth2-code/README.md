@@ -21,7 +21,7 @@ qq的一个客户端应用，需先向qq申请client_id和秘钥等信息
 1. 尝试获取授权码： http://localhost:7000/oauth/authorize?client_id=aiqiyi&response_type=code&redirect_uri=http://localhost:7007/aiqiyi/qq/redirect
 2. 提示输入qq用户名和密码
 3. 登录校验通过后，qq会请求步骤1中redirect_uri的重定向url同时附带授权码code，url像这样 localhost:7007/aiqiyi/qq/redirect?code=FWmFx2
-4. 在aiqiyi的端点中，使用 restTemplate 通过步骤3中重定向url中的code值， 向 qq 发送 token 的申请，之后qq响应token，格式如下
+4. 在aiqiyi的回调端点中，使用 restTemplate 通过步骤3中重定向url中的code值， 向 qq 发送 token 的申请，之后qq响应token，格式如下
 
 ```
 {

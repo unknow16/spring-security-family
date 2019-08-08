@@ -10,13 +10,14 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>01-freemarker</module>
-        <module>02-thymeleaf</module>
-        <module>03-ip-login</module>
-        <module>04-jwt</module>
+        <module>01-security-freemarker</module>
+        <module>02-security-thymeleaf</module>
+        <module>03-security-ip-login</module>
+        <module>04-security-jwt</module>
         <module>05-oauth2-simple</module>
         <module>06-oauth2-diy</module>
         <module>07-oauth2-code</module>
+        <module>08-oauth2-sso</module>
     </modules>
 
     <properties>
